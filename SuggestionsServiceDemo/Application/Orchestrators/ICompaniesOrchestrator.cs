@@ -18,7 +18,7 @@ public interface ICompaniesOrchestrator
     /// </summary>
     /// <param name="companyId">The ID of the given company.</param>
     /// <param name="filter">An optional filter to apply to the collection of data being returned.</param>
-    /// <returns>The collection of suggested company partnerships that fulfil the filter predicate (if it exists).</returns>
+    /// <returns>The collection of suggested company partnerships that fulfill the filter predicate (if it exists).</returns>
     Task<IReadOnlyList<CompanySuggestion>> GetAllCompanySuggestions(int companyId, Predicate<CompanySuggestion>? filter = null);
 
     /// <summary>

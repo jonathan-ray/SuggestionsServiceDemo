@@ -11,7 +11,7 @@ public class WebAdapterUnitTests
 {
     private readonly Mock<ICompaniesOrchestrator> companiesOrchestratorMock;
 
-    private IWebAdapter adapterUnderTest;
+    private readonly IWebAdapter adapterUnderTest;
 
     public WebAdapterUnitTests()
     {
@@ -23,7 +23,7 @@ public class WebAdapterUnitTests
     [Fact]
     public void Construction_WithNullCompaniesOrchestrator_ShouldThrowException()
     {
-        Func<WebAdapter> construction = () => new WebAdapter(companiesOrchestrator: null!);
+        var construction = () => new WebAdapter(companiesOrchestrator: null!);
 
         construction
             .Should().Throw<ArgumentNullException>()

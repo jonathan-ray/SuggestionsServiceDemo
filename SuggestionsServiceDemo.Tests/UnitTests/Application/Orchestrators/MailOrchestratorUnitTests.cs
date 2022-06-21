@@ -12,7 +12,7 @@ public class MailOrchestratorUnitTests
     private readonly Mock<IMailerService> mailerServiceMock;
     private readonly Mock<IPersistenceRepository> persistenceRepositoryMock;
 
-    private IMailOrchestrator orchestratorUnderTest;
+    private readonly IMailOrchestrator orchestratorUnderTest;
 
     public MailOrchestratorUnitTests()
     {
@@ -29,7 +29,7 @@ public class MailOrchestratorUnitTests
     [Fact]
     public void Construction_WithNullGrowthPolicyService_ShouldThrowException()
     {
-        Func<MailOrchestrator> construction = () => new MailOrchestrator(
+        var construction = () => new MailOrchestrator(
             growthPolicyService: null!,
             Mock.Of<IMailerService>(),
             Mock.Of<IPersistenceRepository>());
@@ -42,7 +42,7 @@ public class MailOrchestratorUnitTests
     [Fact]
     public void Construction_WithNullMailerService_ShouldThrowException()
     {
-        Func<MailOrchestrator> construction = () => new MailOrchestrator(
+        var construction = () => new MailOrchestrator(
             Mock.Of<IGrowthPolicyService>(),
             mailerService: null!,
             Mock.Of<IPersistenceRepository>());
@@ -55,7 +55,7 @@ public class MailOrchestratorUnitTests
     [Fact]
     public void Construction_WithNullPersistenceRepository_ShouldThrowException()
     {
-        Func<MailOrchestrator> construction = () => new MailOrchestrator(
+        var construction = () => new MailOrchestrator(
             Mock.Of<IGrowthPolicyService>(),
             Mock.Of<IMailerService>(),
             persistenceRepository: null!);

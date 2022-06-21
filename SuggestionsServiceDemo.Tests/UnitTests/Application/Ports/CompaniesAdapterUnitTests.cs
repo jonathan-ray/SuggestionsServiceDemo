@@ -13,7 +13,7 @@ public class CompaniesAdapterUnitTests
     private readonly Mock<IMailOrchestrator> mailOrchestratorMock;
     private readonly Mock<IScheduleOrchestrator> scheduleOrchestratorMock;
 
-    private ICompaniesAdapter adapterUnderTest;
+    private readonly ICompaniesAdapter adapterUnderTest;
 
     public CompaniesAdapterUnitTests()
     {
@@ -30,7 +30,7 @@ public class CompaniesAdapterUnitTests
     [Fact]
     public void Construction_WithNullCompaniesOrchestrator_ShouldThrowException()
     {
-        Func<CompaniesAdapter> construction = () => new CompaniesAdapter(
+        var construction = () => new CompaniesAdapter(
             companiesOrchestrator: null!,
             Mock.Of<IMailOrchestrator>(),
             Mock.Of<IScheduleOrchestrator>());
@@ -43,7 +43,7 @@ public class CompaniesAdapterUnitTests
     [Fact]
     public void Construction_WithNullMailOrchestrator_ShouldThrowException()
     {
-        Func<CompaniesAdapter> construction = () => new CompaniesAdapter(
+        var construction = () => new CompaniesAdapter(
             Mock.Of<ICompaniesOrchestrator>(),
             mailOrchestrator: null!,
             Mock.Of<IScheduleOrchestrator>());
@@ -56,7 +56,7 @@ public class CompaniesAdapterUnitTests
     [Fact]
     public void Construction_WithNullScheduleOrchestrator_ShouldThrowException()
     {
-        Func<CompaniesAdapter> construction = () => new CompaniesAdapter(
+        var construction = () => new CompaniesAdapter(
             Mock.Of<ICompaniesOrchestrator>(),
             Mock.Of<IMailOrchestrator>(),
             scheduleOrchestrator: null!);

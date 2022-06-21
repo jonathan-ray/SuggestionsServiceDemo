@@ -11,7 +11,7 @@ public class CompaniesOrchestratorUnitTests
     private readonly Mock<ICompaniesService> companiesServiceMock;
     private readonly Mock<IPersistenceRepository> persistenceRepositoryMock;
 
-    private ICompaniesOrchestrator orchestratorUnderTest;
+    private readonly ICompaniesOrchestrator orchestratorUnderTest;
 
     public CompaniesOrchestratorUnitTests()
     {
@@ -26,7 +26,7 @@ public class CompaniesOrchestratorUnitTests
     [Fact]
     public void Construction_WithNullCompaniesService_ShouldThrowException()
     {
-        Func<CompaniesOrchestrator> construction = () => new CompaniesOrchestrator(
+        var construction = () => new CompaniesOrchestrator(
             companiesService: null!,
             Mock.Of<IPersistenceRepository>());
 
@@ -38,7 +38,7 @@ public class CompaniesOrchestratorUnitTests
     [Fact]
     public void Construction_WithNullPersistenceRepository_ShouldThrowException()
     {
-        Func<CompaniesOrchestrator> construction = () => new CompaniesOrchestrator(
+        var construction = () => new CompaniesOrchestrator(
             Mock.Of<ICompaniesService>(),
             persistenceRepository: null!);
 
@@ -54,7 +54,7 @@ public class CompaniesOrchestratorUnitTests
 
         var expectedSuggestions = new List<Company>
         { 
-            new(1220, newCompany.Country, newCompany.Industry),
+            newCompany with { Id = 1220 },
             newCompany
         };
 

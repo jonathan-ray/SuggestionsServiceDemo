@@ -10,7 +10,7 @@ public class ScheduleOrchestratorUnitTests
 {
     private readonly Mock<ITimerService> timerServiceMock;
 
-    private IScheduleOrchestrator orchestratorUnderTest;
+    private readonly IScheduleOrchestrator orchestratorUnderTest;
 
     public ScheduleOrchestratorUnitTests()
     {
@@ -22,7 +22,7 @@ public class ScheduleOrchestratorUnitTests
     [Fact]
     public void Construction_WithNullTimerService_ShouldThrowException()
     {
-        Func<ScheduleOrchestrator> construction = () => new ScheduleOrchestrator(timerService: null!);
+        var construction = () => new ScheduleOrchestrator(timerService: null!);
 
         construction
             .Should().Throw<ArgumentNullException>()

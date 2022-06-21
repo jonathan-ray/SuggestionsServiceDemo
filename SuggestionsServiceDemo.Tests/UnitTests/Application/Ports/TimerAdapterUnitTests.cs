@@ -13,7 +13,7 @@ public class TimerAdapterUnitTests
     private readonly Mock<IMailOrchestrator> mailOrchestratorMock;
     private readonly Mock<IScheduleOrchestrator> scheduleOrchestratorMock;
 
-    private ITimerAdapter adapterUnderTest;
+    private readonly ITimerAdapter adapterUnderTest;
 
     public TimerAdapterUnitTests()
     {
@@ -30,7 +30,7 @@ public class TimerAdapterUnitTests
     [Fact]
     public void Construction_WithNullCompaniesOrchestrator_ShouldThrowException()
     {
-        Func<TimerAdapter> construction = () => new TimerAdapter(
+        var construction = () => new TimerAdapter(
             companiesOrchestrator: null!,
             Mock.Of<IMailOrchestrator>(),
             Mock.Of<IScheduleOrchestrator>());
@@ -43,7 +43,7 @@ public class TimerAdapterUnitTests
     [Fact]
     public void Construction_WithNullMailOrchestrator_ShouldThrowException()
     {
-        Func<TimerAdapter> construction = () => new TimerAdapter(
+        var construction = () => new TimerAdapter(
             Mock.Of<ICompaniesOrchestrator>(),
             mailOrchestrator: null!,
             Mock.Of<IScheduleOrchestrator>());
@@ -56,7 +56,7 @@ public class TimerAdapterUnitTests
     [Fact]
     public void Construction_WithNullScheduleOrchestrator_ShouldThrowException()
     {
-        Func<TimerAdapter> construction = () => new TimerAdapter(
+        var construction = () => new TimerAdapter(
             Mock.Of<ICompaniesOrchestrator>(),
             Mock.Of<IMailOrchestrator>(),
             scheduleOrchestrator: null!);
